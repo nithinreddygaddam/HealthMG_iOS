@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		595640021CB1EB4100007574 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595640011CB1EB4100007574 /* HealthKit.framework */; };
+		595640091CB7BAE500007574 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595640081CB7BAE500007574 /* HealthManager.swift */; };
+		5992324A1CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */; };
+		5992324E1CCD4DA400EBFBB5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5992324D1CCD4DA400EBFBB5 /* LoginViewController.swift */; };
 		59A70ECB1CAF390900B94DCA /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70ECA1CAF390900B94DCA /* SocketIOManager.swift */; };
 		59A70F0D1CAF3D2100B94DCA /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70EF81CAF3D2100B94DCA /* SocketAckEmitter.swift */; };
 		59A70F0E1CAF3D2100B94DCA /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70EF91CAF3D2100B94DCA /* SocketAckManager.swift */; };
@@ -38,8 +41,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		590AC5241CB9A49000E9C711 /* SocketChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SocketChat.entitlements; sourceTree = "<group>"; };
 		595640011CB1EB4100007574 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HealthKit.framework; sourceTree = "<group>"; };
-		595640051CB1EC1600007574 /* SocketChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SocketChat.entitlements; sourceTree = "<group>"; };
+		595640081CB7BAE500007574 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2016-04-21 at 8.07.29 PM.png"; sourceTree = "<group>"; };
+		5992324D1CCD4DA400EBFBB5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59A70ECA1CAF390900B94DCA /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		59A70EF81CAF3D2100B94DCA /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
 		59A70EF91CAF3D2100B94DCA /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
@@ -131,13 +137,16 @@
 		C075D71B1C5E0E81009F9044 /* SocketChat */ = {
 			isa = PBXGroup;
 			children = (
-				595640051CB1EC1600007574 /* SocketChat.entitlements */,
+				590AC5241CB9A49000E9C711 /* SocketChat.entitlements */,
+				595640081CB7BAE500007574 /* HealthManager.swift */,
+				599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */,
 				59A70ECA1CAF390900B94DCA /* SocketIOManager.swift */,
 				C075D72E1C5E0E96009F9044 /* View Controllers */,
 				C075D71C1C5E0E81009F9044 /* AppDelegate.swift */,
+				C075D7251C5E0E81009F9044 /* LaunchScreen.storyboard */,
+				5992324D1CCD4DA400EBFBB5 /* LoginViewController.swift */,
 				C075D7201C5E0E81009F9044 /* Main.storyboard */,
 				C075D7231C5E0E81009F9044 /* Assets.xcassets */,
-				C075D7251C5E0E81009F9044 /* LaunchScreen.storyboard */,
 				C075D7281C5E0E81009F9044 /* Info.plist */,
 				595640011CB1EB4100007574 /* HealthKit.framework */,
 			);
@@ -186,6 +195,9 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 4Z8GLS9K7U;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -219,6 +231,7 @@
 				C075D7271C5E0E81009F9044 /* LaunchScreen.storyboard in Resources */,
 				C075D7241C5E0E81009F9044 /* Assets.xcassets in Resources */,
 				C075D7221C5E0E81009F9044 /* Main.storyboard in Resources */,
+				5992324A1CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +256,7 @@
 				59A70F211CAF3D2100B94DCA /* WebSocket.swift in Sources */,
 				59A70F171CAF3D2100B94DCA /* SocketEventHandler.swift in Sources */,
 				59A70F1C1CAF3D2100B94DCA /* SocketPacket.swift in Sources */,
+				595640091CB7BAE500007574 /* HealthManager.swift in Sources */,
 				59A70F151CAF3D2100B94DCA /* SocketEngineSpec.swift in Sources */,
 				59A70F191CAF3D2100B94DCA /* SocketIOClientOption.swift in Sources */,
 				59A70F131CAF3D2100B94DCA /* SocketEnginePacketType.swift in Sources */,
@@ -252,6 +266,7 @@
 				59A70F1E1CAF3D2100B94DCA /* SocketStringReader.swift in Sources */,
 				59A70F1F1CAF3D2100B94DCA /* SocketTypes.swift in Sources */,
 				59A70F1B1CAF3D2100B94DCA /* SocketLogger.swift in Sources */,
+				5992324E1CCD4DA400EBFBB5 /* LoginViewController.swift in Sources */,
 				C075D71D1C5E0E81009F9044 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +392,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nithinreddy.SocketChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -396,6 +412,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nithinreddy.SocketChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

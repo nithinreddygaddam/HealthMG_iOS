@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+//        let healthStore = HKHealthStore()
+        let healthManager:HealthManager = HealthManager()
+//        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
+//        let frequency = HKUpdateFrequency(rawValue: 1)
+//        healthStore.enableBackgroundDeliveryForType( heartRateType,
+//                                                    frequency: frequency!,
+//                                                    withCompletion: (Bool))
+        healthManager.startObservingHeartRateChanges()
         return true
     }
 

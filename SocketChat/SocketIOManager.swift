@@ -13,7 +13,7 @@ class SocketIOManager: NSObject {
     //Singleton
     static let sharedInstance = SocketIOManager()
     
-    var socket: SocketIOClient = SocketIOClient(socketURL: NSURL(string: "http://172.20.10.2:4000")!)
+    var socket: SocketIOClient = SocketIOClient(socketURL: NSURL(string: "http://192.168.1.7:4000")!)
     
     override init() {
         super.init()

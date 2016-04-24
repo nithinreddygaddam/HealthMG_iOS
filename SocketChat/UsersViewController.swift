@@ -14,40 +14,56 @@ class UsersViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
         
-        if (HKHealthStore.isHealthDataAvailable()){
-            
-            self.healthStore.requestAuthorizationToShareTypes(nil, readTypes:[heartRateType], completion:{(success, error) in
-                let sortByTime = NSSortDescriptor(key:HKSampleSortIdentifierEndDate, ascending:false)
-                let timeFormatter = NSDateFormatter()
-                timeFormatter.dateFormat = "hh:mm:ss"
-                
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "MM/dd/YYYY"
-                
-                let query = HKSampleQuery(sampleType:heartRateType, predicate:nil, limit:0, sortDescriptors:[sortByTime], resultsHandler:{(query, results, error) in
-                    guard let results = results else { return }
-                    for quantitySample in results {
-                        let quantity = (quantitySample as! HKQuantitySample).quantity
-                        let heartRateUnit = HKUnit(fromString: "count/min")
-                        
-                        
-                        print("\(timeFormatter.stringFromDate(quantitySample.startDate)),\(dateFormatter.stringFromDate(quantitySample.startDate)),\(quantity.doubleValueForUnit(heartRateUnit))")
-                        
-                        let time = timeFormatter.stringFromDate(quantitySample.startDate)
-                        
-                        let date = dateFormatter.stringFromDate(quantitySample.startDate)
-                        
-                        let hr = quantity.doubleValueForUnit(heartRateUnit)
-                        
-                        SocketIOManager.sharedInstance.sendHeartRate( time, date: date, hr: hr)
-                    }
-                    
-                })
-                self.healthStore.executeQuery(query)
-            })
+        let healthManager:HealthManager = HealthManager()
+        
+        healthManager.authorizeHealthKit { (authorized,  error) -> Void in
+            if authorized {
+                print("HealthKit authorization received.")
+            }
+            else
+            {
+                print("HealthKit authorization denied!")
+                if error != nil {
+                    print("\(error)")
+                }
+            }
         }
+
+//        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
+//        
+//        if (HKHealthStore.isHealthDataAvailable()){
+//            
+//            self.healthStore.requestAuthorizationToShareTypes(nil, readTypes:[heartRateType], completion:{(success, error) in
+//                let sortByTime = NSSortDescriptor(key:HKSampleSortIdentifierEndDate, ascending:false)
+//                let timeFormatter = NSDateFormatter()
+//                timeFormatter.dateFormat = "hh:mm:ss"
+//                
+//                let dateFormatter = NSDateFormatter()
+//                dateFormatter.dateFormat = "MM/dd/YYYY"
+//                
+//                let query = HKSampleQuery(sampleType:heartRateType, predicate:nil, limit:0, sortDescriptors:[sortByTime], resultsHandler:{(query, results, error) in
+//                    guard let results = results else { return }
+//                    for quantitySample in results {
+//                        let quantity = (quantitySample as! HKQuantitySample).quantity
+//                        let heartRateUnit = HKUnit(fromString: "count/min")
+//                        
+//                        
+//                        print("\(timeFormatter.stringFromDate(quantitySample.startDate)),\(dateFormatter.stringFromDate(quantitySample.startDate)),\(quantity.doubleValueForUnit(heartRateUnit))")
+//                        
+//                        let time = timeFormatter.stringFromDate(quantitySample.startDate)
+//                        
+//                        let date = dateFormatter.stringFromDate(quantitySample.startDate)
+//                        
+//                        let hr = quantity.doubleValueForUnit(heartRateUnit)
+//                        
+//                        SocketIOManager.sharedInstance.sendHeartRate( time, date: date, hr: hr)
+//                    }
+//                    
+//                })
+//                self.healthStore.executeQuery(query)
+//            })
+//        }
     }
 
 
