@@ -22,10 +22,25 @@
                                 <rect key="frame" x="221" y="181" width="159" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="159" id="Dq9-KS-1IS"/>
+                                    <constraint firstAttribute="height" constant="45" id="cdh-rA-FfX"/>
+                                    <constraint firstAttribute="width" constant="159" id="ztK-KI-FH2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cdh-rA-FfX"/>
+                                        <exclude reference="ztK-KI-FH2"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="Dq9-KS-1IS"/>
+                                        <include reference="cdh-rA-FfX"/>
+                                        <include reference="ztK-KI-FH2"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2016-04-21 at 8.07.29 PM.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-4f-tZH">
                                 <rect key="frame" x="122" y="321" width="357" height="123"/>
@@ -33,6 +48,20 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="I91-Uc-Pbs"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="I91-Uc-Pbs"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="34" y="333" width="333" height="133"/>
+                                    <mask key="constraints">
+                                        <include reference="I91-Uc-Pbs"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -40,17 +69,48 @@
                             <constraint firstItem="Ikb-4f-tZH" firstAttribute="top" secondItem="IbR-Xt-sEu" secondAttribute="bottom" constant="95" id="4Eb-ZP-coy"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="IbR-Xt-sEu" secondAttribute="bottom" constant="374" id="6tL-w3-2HW"/>
                             <constraint firstItem="IbR-Xt-sEu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FiN-GM-Kei"/>
+                            <constraint firstItem="IbR-Xt-sEu" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="137" id="TUD-rr-2YI"/>
                             <constraint firstItem="Ikb-4f-tZH" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="102" id="Xs6-we-Okl"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Ikb-4f-tZH" secondAttribute="bottom" constant="156" id="YXj-Xs-F4u"/>
                             <constraint firstItem="IbR-Xt-sEu" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="161" id="Yhd-HH-ZTr"/>
+                            <constraint firstItem="IbR-Xt-sEu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="akw-Mu-NQy"/>
+                            <constraint firstItem="IbR-Xt-sEu" firstAttribute="centerX" secondItem="Ikb-4f-tZH" secondAttribute="centerX" id="eJp-c4-PGT"/>
                             <constraint firstItem="Ikb-4f-tZH" firstAttribute="centerX" secondItem="IbR-Xt-sEu" secondAttribute="centerX" id="edg-NK-N7V"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Ikb-4f-tZH" secondAttribute="bottom" constant="132" id="m9Y-BV-n55"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ikb-4f-tZH" secondAttribute="trailing" constant="101" id="pgn-YA-150"/>
+                            <constraint firstItem="Ikb-4f-tZH" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="34" id="zu1-pE-KSo"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TUD-rr-2YI"/>
+                                <exclude reference="akw-Mu-NQy"/>
+                                <exclude reference="eJp-c4-PGT"/>
+                                <exclude reference="zu1-pE-KSo"/>
+                                <exclude reference="m9Y-BV-n55"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="FiN-GM-Kei"/>
+                                <include reference="TUD-rr-2YI"/>
+                                <exclude reference="Yhd-HH-ZTr"/>
+                                <include reference="akw-Mu-NQy"/>
+                                <include reference="eJp-c4-PGT"/>
+                                <exclude reference="4Eb-ZP-coy"/>
+                                <exclude reference="Xs6-we-Okl"/>
+                                <exclude reference="edg-NK-N7V"/>
+                                <exclude reference="pgn-YA-150"/>
+                                <include reference="zu1-pE-KSo"/>
+                                <exclude reference="6tL-w3-2HW"/>
+                                <exclude reference="YXj-Xs-F4u"/>
+                                <include reference="m9Y-BV-n55"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
     <resources>

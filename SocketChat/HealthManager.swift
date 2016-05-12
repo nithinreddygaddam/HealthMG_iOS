@@ -11,6 +11,7 @@ import HealthKit
 
 class HealthManager{
     
+    var loggedinUser = [String: AnyObject]()
   let healthKitStore:HKHealthStore = HKHealthStore()
 
   func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!)
@@ -25,14 +26,6 @@ class HealthManager{
       HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!,
       HKObjectType.workoutType()
       )
-
-//    // 2. Set the types you want to write to HK Store
-//    let healthKitTypesToWrite = Set(arrayLiteral:[
-//      HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
-//      HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned),
-//      HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning),
-//      HKQuantityType.workoutType()
-//      ])
 
     // 3. If the store is not available (for instance, iPad) return an error and don't go on.
     if !HKHealthStore.isHealthDataAvailable()
@@ -98,25 +91,18 @@ class HealthManager{
     return (age, biologicalSex, bloodType)
   }
   
-
-    
-//    let past = NSDate.distantPast() as NSDate
-//    let now = NSDate()
-//    return HKQuery.predicateForSamplesWithStartDate(past, endDate:now, options: .None)
-//    }()
     
 
-//here is my query:
     var hkAnchor =  HKQueryAnchor(fromValue: UInt(HKAnchoredObjectQueryNoAnchor));
-//    var anchor = HKQueryAnchor(fromValue: UInt(HKAnchoredObjectQueryNoAnchor))
     let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
     lazy var query: HKObserverQuery = {[weak self] in
     let strongSelf = self!
     return HKObserverQuery(sampleType: strongSelf.heartRateType,
-                           //predicate: strongSelf.longRunningPredicate,
         predicate : nil, //all samples delivered
         updateHandler: strongSelf.heartRateChangedHandler)
     }()
+    
+    //query Health data
 
 
     func startObservingHeartRateChanges(){
@@ -135,7 +121,7 @@ class HealthManager{
                                                         }
                                                         
     })
-}
+    }
     
     let AnchorKey = "HKClientAnchorKey"
     func getAnchor() -> HKQueryAnchor? {
@@ -154,6 +140,7 @@ class HealthManager{
     }
 
 var queryStartDate =  NSDate()
+
 ///** this should get called in the background */
 func heartRateChangedHandler(query: HKObserverQuery!,
                           completionHandler: HKObserverQueryCompletionHandler!,
@@ -161,96 +148,178 @@ func heartRateChangedHandler(query: HKObserverQuery!,
     
     NSLog(" Got an update Here ")
     
-//    func getGlucoseSinceAnchor(anchor:HKQueryAnchor?, maxResults:uint, callback: ((source: HKClient, added: [String]?, deleted: [String]?, newAnchor: HKQueryAnchor?, error: NSError?)->Void)!){
-//        let queryEndDate = NSDate(timeIntervalSinceNow: NSTimeInterval(60.0 * 60.0 * 24))
-    let queryEndDate = NSDate()
-        let sampleType: HKSampleType = heartRateType as HKSampleType
-        let predicate: NSPredicate = HKAnchoredObjectQuery.predicateForSamplesWithStartDate(queryStartDate, endDate: queryEndDate, options: HKQueryOptions.None)
-        queryStartDate = queryEndDate
-    let timeFormatter = NSDateFormatter()
-                    timeFormatter.dateFormat = "hh:mm:ss"
+        let timeFormatter = NSDateFormatter()
+    timeFormatter.dateFormat = "hh:mm:ss"
     
-                    let dateFormatter = NSDateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/YYYY"
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "MM/dd"
     
-//        if(hkAnchor != nil){
-//            hkAnchor = anchor!
-//        } else {
-//            hkAnchor = HKQueryAnchor(fromValue: Int(HKAnchoredObjectQueryNoAnchor))
-//        }
     
         let onAnchorQueryResults : ((HKAnchoredObjectQuery, [HKSample]?, [HKDeletedObject]?, HKQueryAnchor?, NSError?) -> Void)! = {
             (query:HKAnchoredObjectQuery, addedObjects:[HKSample]?, deletedObjects:[HKDeletedObject]?, newAnchor:HKQueryAnchor?, nsError:NSError?) -> Void in
-            
-            var added = [String]()
-            var deleted = [String]()
-            
-            if (addedObjects?.count > 0){
+
+            if (addedObjects?.count > 0 && !self.loggedinUser.isEmpty){
+             
+                
                 for obj in addedObjects! {
                     let quant = obj as? HKQuantitySample
-//                    let quantity = (obj as! HKQuantitySample).quantity
                     if(quant?.UUID.UUIDString != nil){
-//                        let heartRateUnit = HKUnit(fromString: "count/min")
-//                        let val = quantity.doubleValueForUnit(heartRateUnit)
                         let time = timeFormatter.stringFromDate(quant!.startDate)
                         let date = dateFormatter.stringFromDate(quant!.startDate)
-                        let val = Double( (quant?.quantity.doubleValueForUnit(HKUnit(fromString: "count/min")))! )
-                        let msg : String = (quant?.UUID.UUIDString)! + " " + String(val)
-                        added.append(msg)
-                        print("\(time),\(date),\(msg)")
+                        let val = String( (quant?.quantity.doubleValueForUnit(HKUnit(fromString: "count/min")))! )
+                        let uuid : String = (quant?.UUID.UUIDString)!
+                        print("\(quant!.startDate),\(uuid),  -- \(val)")
+                        let timeStamp = String(quant!.startDate)
                         
-
+                        SocketIOManager.sharedInstance.sendHeartRate(timeStamp, date: date, time: time, hr: val, uuid: uuid, publisher: self.loggedinUser["_id"] as! String)
+                        
                     }
                 }
-            }
-            
-            if (deletedObjects?.count > 0){
-                for del in deletedObjects! {
-                    let value : String = del.UUID.UUIDString
-                    deleted.append(value)
-                }
+
             }
             
         }
-        
+    
+    let queryEndDate = NSDate()
+    let sampleType: HKSampleType = heartRateType as HKSampleType
+    print("Before Start: ")
+    print(self.queryStartDate)
+    let predicate: NSPredicate = HKAnchoredObjectQuery.predicateForSamplesWithStartDate(self.queryStartDate, endDate: queryEndDate, options: HKQueryOptions.None)
+    
+    print("After: ")
+    print(self.queryStartDate)
+    
     let anchoredQuery = HKAnchoredObjectQuery(type: sampleType, predicate: predicate, anchor: hkAnchor, limit: 0, resultsHandler: onAnchorQueryResults)
     anchoredQuery.updateHandler = onAnchorQueryResults
     healthKitStore.executeQuery(anchoredQuery)
+    self.queryStartDate = queryEndDate
     
-    //this function will get called each time a new weight sample is added to healthKit.
+    //this function will get called each time a new heart Rate sample is added to healthKit.
  
- //Here, I need to actually query for the changed values.. 
+ // query for the changed values..
  //using the standard query functions in HealthKit.. 
  
- //Tell IOS we're done... updated my server, etc. 
  completionHandler()
+ }
 
     
- }
-//
-//
-// }
+    func updateHearRate(user: [String: AnyObject], startDate2: String){
+        let tempUser = (NSUserDefaults().objectForKey("userData") as? [String: AnyObject])
+        self.loggedinUser = tempUser!
+                //Date Conversion
+                let dateFormater = NSDateFormatter()
+                dateFormater.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+                if (startDate2 == " ")
+                {
+                    let past = NSDate.distantPast() as NSDate
+                    queryStartDate = past
+        }
+                else{
+                    queryStartDate = dateFormater.dateFromString(startDate2)!
+                    
+                    print("queryStartDate: ")
+                    
+                    print(queryStartDate)
+        }
+        
+                if (HKHealthStore.isHealthDataAvailable()){
+                    let queryEndDate = NSDate()
+                    let predicate: NSPredicate = HKSampleQuery.predicateForSamplesWithStartDate(queryStartDate, endDate: queryEndDate, options: HKQueryOptions.None)
+                    queryStartDate = queryEndDate
+        
+                    self.healthKitStore.requestAuthorizationToShareTypes(nil, readTypes:[heartRateType], completion:{(success, error) in
+                        let sortByTime = NSSortDescriptor(key:HKSampleSortIdentifierEndDate, ascending:false)
+                        let timeFormatter = NSDateFormatter()
+                        timeFormatter.dateFormat = "hh:mm:ss"
+                        
+                        let dateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "MM/dd"
+        
+                        let query = HKSampleQuery(sampleType:self.heartRateType, predicate:predicate, limit:0, sortDescriptors:[sortByTime], resultsHandler:{(query, results, error) in
+                            guard let results = results else { return }
+                            for quantitySample in results {
+                                let quant = (quantitySample as? HKQuantitySample)
+                                
+                                if(quant?.UUID.UUIDString != nil){
+                                    let time = timeFormatter.stringFromDate(quant!.startDate)
+                                    let date = dateFormatter.stringFromDate(quant!.startDate)
+                                    let val = String( (quant?.quantity.doubleValueForUnit(HKUnit(fromString: "count/min")))! )
+                                    let uuid : String = (quant?.UUID.UUIDString)!
+                                    print("\(quant!.startDate),\(uuid),    : \(val)")
+                                    let timeStamp = String(quant!.startDate)
+//                                    userHeartRates!.setValue(val, forKey: timeStamp)
+                                    SocketIOManager.sharedInstance.sendHeartRate(timeStamp, date: date, time: time, hr: val, uuid: uuid, publisher: self.loggedinUser["_id"] as! String)
+                                    
+                                }
+
+        
+                            }
+                            
+                        })
+                        self.healthKitStore.executeQuery(query)
+                    })
+                }
+    }
     
     
-//    func updateHeartRate(samples: [HKSample]?) {
-//        guard let heartRateSamples = samples as? [HKQuantitySample] else {return}
-//
-//        dispatch_async(dispatch_get_main_queue()) {
-//            guard let sample = heartRateSamples.first else{return}
-//            ////the value is the updating heartrate
-//            let value = sample.quantity.doubleValueForUnit(self.heartRateUnit)
-//            self.bpmCounterLabel.setText(String(UInt16(value)))
+//    func getPublishersList(user: [String: AnyObject], completionHandler: (subscriptionData: [[String: AnyObject]]!) -> Void) {
+//        
+//        socket.emit("getPublishersList", user)
+//        
+//        socket.on("successPubList") { ( dataArray, ack) -> Void in
 //            
-//            let times = self.timeStamp()
-//            let stp = "\(times) \(String(value)) \n"
-//            self.heartValue = self.heartValue + stp
+//            completionHandler(subscriptionData: dataArray[0] as! [[String: AnyObject]] )
 //            
-//            // retrieve source from sample
-//            let name = sample.sourceRevision.source.name
-//            self.updateSourceName(name)
-//            self.animateHeart()
-//        }//end dispatch
+//        }
 //    }
+    
+//    func getHeartRates(completionHandler: (userHeartRates: [[String: AnyObject]]!)  -> Void) {
+//        
+//        var userHeartRates = [[String: AnyObject]]()
+//        
+//        let past = NSDate.distantPast() as NSDate
+//        if (HKHealthStore.isHealthDataAvailable()){
+//            let queryEndDate = NSDate()
+//            let predicate: NSPredicate = HKSampleQuery.predicateForSamplesWithStartDate(past, endDate: queryEndDate, options: HKQueryOptions.None)
+//            
+//            self.healthKitStore.requestAuthorizationToShareTypes(nil, readTypes:[heartRateType], completion:{(success, error) in
+//                let sortByTime = NSSortDescriptor(key:HKSampleSortIdentifierEndDate, ascending:false)
+//                let timeFormatter = NSDateFormatter()
+//                timeFormatter.dateFormat = "hh:mm:ss"
+//                
+//                let dateFormatter = NSDateFormatter()
+//                dateFormatter.dateFormat = "MM/dd/YYYY"
+//                
+//                let query = HKSampleQuery(sampleType:self.heartRateType, predicate:predicate, limit:0, sortDescriptors:[sortByTime], resultsHandler:{(query, results, error) in
+//                    guard let results = results else { return }
+//                    for quantitySample in results {
+//                        let quant = (quantitySample as? HKQuantitySample)
+//                        
+//                        if(quant?.UUID.UUIDString != nil){
+//                            let time = timeFormatter.stringFromDate(quant!.startDate)
+//                            let date = dateFormatter.stringFromDate(quant!.startDate)
+//                            let val = String( (quant?.quantity.doubleValueForUnit(HKUnit(fromString: "count/min")))! )
+//                            let uuid : String = (quant?.UUID.UUIDString)!
+//                            print("\(quant!.startDate),\(uuid),    $$ \(val)")
+//                            let timeStamp = String(quant!.startDate)
+//
+//                            userHeartRates.append(["time": time, "date": date, "timeStamp": timeStamp, "hr": val])
+//                            
+//                        }
+//                        
+//                        
+//                    }
+//                    
+//                })
+//                self.healthKitStore.executeQuery(query)
+//                completionHandler(userHeartRates: userHeartRates )
+//            })
+//        }
+//       
+//    }
+
+    
+
 
     
     

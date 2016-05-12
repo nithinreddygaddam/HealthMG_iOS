@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		594395D91CD9924600A78E1B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594395D81CD9924600A78E1B /* RegisterViewController.swift */; };
+		5943963B1CDC4F5B00A78E1B /* Screen Shot 2016-05-05 at 11.03.58 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 5943963A1CDC4F5B00A78E1B /* Screen Shot 2016-05-05 at 11.03.58 PM.png */; };
+		5943963D1CDC4F6000A78E1B /* Screen Shot 2016-05-05 at 11.03.30 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 5943963C1CDC4F6000A78E1B /* Screen Shot 2016-05-05 at 11.03.30 PM.png */; };
+		5943963F1CDC55B800A78E1B /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943963E1CDC55B800A78E1B /* DashboardViewController.swift */; };
 		595640021CB1EB4100007574 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595640011CB1EB4100007574 /* HealthKit.framework */; };
 		595640091CB7BAE500007574 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595640081CB7BAE500007574 /* HealthManager.swift */; };
 		5992324A1CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */; };
 		5992324E1CCD4DA400EBFBB5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5992324D1CCD4DA400EBFBB5 /* LoginViewController.swift */; };
+		599A91B31CE2A23700F6A738 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A91B21CE2A23700F6A738 /* SyncViewController.swift */; };
 		59A70ECB1CAF390900B94DCA /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70ECA1CAF390900B94DCA /* SocketIOManager.swift */; };
 		59A70F0D1CAF3D2100B94DCA /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70EF81CAF3D2100B94DCA /* SocketAckEmitter.swift */; };
 		59A70F0E1CAF3D2100B94DCA /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70EF91CAF3D2100B94DCA /* SocketAckManager.swift */; };
@@ -33,19 +38,80 @@
 		59A70F1F1CAF3D2100B94DCA /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70F0A1CAF3D2100B94DCA /* SocketTypes.swift */; };
 		59A70F201CAF3D2100B94DCA /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70F0B1CAF3D2100B94DCA /* SwiftRegex.swift */; };
 		59A70F211CAF3D2100B94DCA /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A70F0C1CAF3D2100B94DCA /* WebSocket.swift */; };
+		59BD51651CE399FF00608B79 /* CurrentDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD51641CE399FF00608B79 /* CurrentDashboardViewController.swift */; };
+		59BD540D1CE3AEAF00608B79 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BD54061CE3AE4A00608B79 /* Charts.framework */; };
+		59BD540E1CE3AEAF00608B79 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59BD54061CE3AE4A00608B79 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59BD54141CE3F98F00608B79 /* PublisherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD54131CE3F98F00608B79 /* PublisherViewController.swift */; };
+		59D987031CE138B100AA172B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59D987021CE138B100AA172B /* Main.storyboard */; };
+		59D987251CE1A9A400AA172B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D987241CE1A9A400AA172B /* ListViewController.swift */; };
 		C075D71D1C5E0E81009F9044 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C075D71C1C5E0E81009F9044 /* AppDelegate.swift */; };
-		C075D7221C5E0E81009F9044 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C075D7201C5E0E81009F9044 /* Main.storyboard */; };
 		C075D7241C5E0E81009F9044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C075D7231C5E0E81009F9044 /* Assets.xcassets */; };
 		C075D7271C5E0E81009F9044 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C075D7251C5E0E81009F9044 /* LaunchScreen.storyboard */; };
-		C075D7301C5E0EB1009F9044 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C075D72F1C5E0EB1009F9044 /* UsersViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		59BD54051CE3AE4A00608B79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		59BD54071CE3AE4A00608B79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		59BD54091CE3AE4A00608B79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		59BD540B1CE3AE4A00608B79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		59BD540F1CE3AEAF00608B79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		59BD54111CE3AEAF00608B79 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				59BD540E1CE3AEAF00608B79 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		590AC5241CB9A49000E9C711 /* SocketChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SocketChat.entitlements; sourceTree = "<group>"; };
+		594395D81CD9924600A78E1B /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ../RegisterViewController.swift; sourceTree = "<group>"; };
+		5943963A1CDC4F5B00A78E1B /* Screen Shot 2016-05-05 at 11.03.58 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2016-05-05 at 11.03.58 PM.png"; path = "SocketChat/Screen Shot 2016-05-05 at 11.03.58 PM.png"; sourceTree = "<group>"; };
+		5943963C1CDC4F6000A78E1B /* Screen Shot 2016-05-05 at 11.03.30 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2016-05-05 at 11.03.30 PM.png"; path = "SocketChat/Screen Shot 2016-05-05 at 11.03.30 PM.png"; sourceTree = "<group>"; };
+		5943963E1CDC55B800A78E1B /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		595640011CB1EB4100007574 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HealthKit.framework; sourceTree = "<group>"; };
 		595640081CB7BAE500007574 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
-		599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2016-04-21 at 8.07.29 PM.png"; sourceTree = "<group>"; };
+		599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2016-04-21 at 8.07.29 PM.png"; path = "SocketChat/Screen Shot 2016-04-21 at 8.07.29 PM.png"; sourceTree = "<group>"; };
 		5992324D1CCD4DA400EBFBB5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		599A91B21CE2A23700F6A738 /* SyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		59A70ECA1CAF390900B94DCA /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		59A70EF81CAF3D2100B94DCA /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
 		59A70EF91CAF3D2100B94DCA /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
@@ -68,13 +134,16 @@
 		59A70F0A1CAF3D2100B94DCA /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
 		59A70F0B1CAF3D2100B94DCA /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
 		59A70F0C1CAF3D2100B94DCA /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		59BD51641CE399FF00608B79 /* CurrentDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentDashboardViewController.swift; sourceTree = "<group>"; };
+		59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		59BD54131CE3F98F00608B79 /* PublisherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublisherViewController.swift; sourceTree = "<group>"; };
+		59D987021CE138B100AA172B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		59D987241CE1A9A400AA172B /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C075D7191C5E0E81009F9044 /* SocketChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C075D71C1C5E0E81009F9044 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C075D7211C5E0E81009F9044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C075D7231C5E0E81009F9044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C075D7261C5E0E81009F9044 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C075D7281C5E0E81009F9044 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C075D72F1C5E0EB1009F9044 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +152,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				595640021CB1EB4100007574 /* HealthKit.framework in Frameworks */,
+				59BD540D1CE3AEAF00608B79 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		594396401CDC92AE00A78E1B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5943963A1CDC4F5B00A78E1B /* Screen Shot 2016-05-05 at 11.03.58 PM.png */,
+				5943963C1CDC4F6000A78E1B /* Screen Shot 2016-05-05 at 11.03.30 PM.png */,
+				599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		59A70EF71CAF3D2100B94DCA /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,9 +197,22 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		59BD53FF1CE3AE4900608B79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59BD54061CE3AE4A00608B79 /* Charts.framework */,
+				59BD54081CE3AE4A00608B79 /* Charts.framework */,
+				59BD540A1CE3AE4A00608B79 /* Charts.framework */,
+				59BD540C1CE3AE4A00608B79 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C075D7101C5E0E81009F9044 = {
 			isa = PBXGroup;
 			children = (
+				59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */,
+				594396401CDC92AE00A78E1B /* Images */,
 				59A70EF71CAF3D2100B94DCA /* Source */,
 				C075D71B1C5E0E81009F9044 /* SocketChat */,
 				C075D71A1C5E0E81009F9044 /* Products */,
@@ -139,13 +232,11 @@
 			children = (
 				590AC5241CB9A49000E9C711 /* SocketChat.entitlements */,
 				595640081CB7BAE500007574 /* HealthManager.swift */,
-				599232491CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png */,
 				59A70ECA1CAF390900B94DCA /* SocketIOManager.swift */,
 				C075D72E1C5E0E96009F9044 /* View Controllers */,
 				C075D71C1C5E0E81009F9044 /* AppDelegate.swift */,
 				C075D7251C5E0E81009F9044 /* LaunchScreen.storyboard */,
-				5992324D1CCD4DA400EBFBB5 /* LoginViewController.swift */,
-				C075D7201C5E0E81009F9044 /* Main.storyboard */,
+				59D987021CE138B100AA172B /* Main.storyboard */,
 				C075D7231C5E0E81009F9044 /* Assets.xcassets */,
 				C075D7281C5E0E81009F9044 /* Info.plist */,
 				595640011CB1EB4100007574 /* HealthKit.framework */,
@@ -156,7 +247,13 @@
 		C075D72E1C5E0E96009F9044 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C075D72F1C5E0EB1009F9044 /* UsersViewController.swift */,
+				5992324D1CCD4DA400EBFBB5 /* LoginViewController.swift */,
+				594395D81CD9924600A78E1B /* RegisterViewController.swift */,
+				5943963E1CDC55B800A78E1B /* DashboardViewController.swift */,
+				59D987241CE1A9A400AA172B /* ListViewController.swift */,
+				599A91B21CE2A23700F6A738 /* SyncViewController.swift */,
+				59BD51641CE399FF00608B79 /* CurrentDashboardViewController.swift */,
+				59BD54131CE3F98F00608B79 /* PublisherViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -171,10 +268,12 @@
 				C075D7151C5E0E81009F9044 /* Sources */,
 				C075D7161C5E0E81009F9044 /* Frameworks */,
 				C075D7171C5E0E81009F9044 /* Resources */,
+				59BD54111CE3AEAF00608B79 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				59BD54101CE3AEAF00608B79 /* PBXTargetDependency */,
 			);
 			name = SocketChat;
 			productName = SocketChat;
@@ -216,6 +315,12 @@
 			mainGroup = C075D7101C5E0E81009F9044;
 			productRefGroup = C075D71A1C5E0E81009F9044 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 59BD53FF1CE3AE4900608B79 /* Products */;
+					ProjectRef = 59BD53FE1CE3AE4900608B79 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C075D7181C5E0E81009F9044 /* SocketChat */,
@@ -223,14 +328,47 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		59BD54061CE3AE4A00608B79 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 59BD54051CE3AE4A00608B79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59BD54081CE3AE4A00608B79 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 59BD54071CE3AE4A00608B79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59BD540A1CE3AE4A00608B79 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 59BD54091CE3AE4A00608B79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		59BD540C1CE3AE4A00608B79 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 59BD540B1CE3AE4A00608B79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		C075D7171C5E0E81009F9044 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5943963B1CDC4F5B00A78E1B /* Screen Shot 2016-05-05 at 11.03.58 PM.png in Resources */,
+				5943963D1CDC4F6000A78E1B /* Screen Shot 2016-05-05 at 11.03.30 PM.png in Resources */,
 				C075D7271C5E0E81009F9044 /* LaunchScreen.storyboard in Resources */,
+				59D987031CE138B100AA172B /* Main.storyboard in Resources */,
 				C075D7241C5E0E81009F9044 /* Assets.xcassets in Resources */,
-				C075D7221C5E0E81009F9044 /* Main.storyboard in Resources */,
 				5992324A1CCCC7E000EBFBB5 /* Screen Shot 2016-04-21 at 8.07.29 PM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,11 +380,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59D987251CE1A9A400AA172B /* ListViewController.swift in Sources */,
+				594395D91CD9924600A78E1B /* RegisterViewController.swift in Sources */,
 				59A70F121CAF3D2100B94DCA /* SocketEngineClient.swift in Sources */,
 				59A70F111CAF3D2100B94DCA /* SocketEngine.swift in Sources */,
 				59A70F1D1CAF3D2100B94DCA /* SocketParsable.swift in Sources */,
+				59BD54141CE3F98F00608B79 /* PublisherViewController.swift in Sources */,
 				59A70F0F1CAF3D2100B94DCA /* SocketAnyEvent.swift in Sources */,
-				C075D7301C5E0EB1009F9044 /* UsersViewController.swift in Sources */,
 				59A70F0E1CAF3D2100B94DCA /* SocketAckManager.swift in Sources */,
 				59A70F141CAF3D2100B94DCA /* SocketEnginePollable.swift in Sources */,
 				59A70F101CAF3D2100B94DCA /* SocketClientSpec.swift in Sources */,
@@ -256,11 +396,13 @@
 				59A70F211CAF3D2100B94DCA /* WebSocket.swift in Sources */,
 				59A70F171CAF3D2100B94DCA /* SocketEventHandler.swift in Sources */,
 				59A70F1C1CAF3D2100B94DCA /* SocketPacket.swift in Sources */,
+				5943963F1CDC55B800A78E1B /* DashboardViewController.swift in Sources */,
 				595640091CB7BAE500007574 /* HealthManager.swift in Sources */,
 				59A70F151CAF3D2100B94DCA /* SocketEngineSpec.swift in Sources */,
 				59A70F191CAF3D2100B94DCA /* SocketIOClientOption.swift in Sources */,
 				59A70F131CAF3D2100B94DCA /* SocketEnginePacketType.swift in Sources */,
 				59A70F1A1CAF3D2100B94DCA /* SocketIOClientStatus.swift in Sources */,
+				59BD51651CE399FF00608B79 /* CurrentDashboardViewController.swift in Sources */,
 				59A70ECB1CAF390900B94DCA /* SocketIOManager.swift in Sources */,
 				59A70F181CAF3D2100B94DCA /* SocketIOClient.swift in Sources */,
 				59A70F1E1CAF3D2100B94DCA /* SocketStringReader.swift in Sources */,
@@ -268,20 +410,21 @@
 				59A70F1B1CAF3D2100B94DCA /* SocketLogger.swift in Sources */,
 				5992324E1CCD4DA400EBFBB5 /* LoginViewController.swift in Sources */,
 				C075D71D1C5E0E81009F9044 /* AppDelegate.swift in Sources */,
+				599A91B31CE2A23700F6A738 /* SyncViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		C075D7201C5E0E81009F9044 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C075D7211C5E0E81009F9044 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		59BD54101CE3AEAF00608B79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 59BD540F1CE3AEAF00608B79 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		C075D7251C5E0E81009F9044 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -382,6 +525,7 @@
 				CODE_SIGN_ENTITLEMENTS = SocketChat/SocketChat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SocketChat",
@@ -402,6 +546,7 @@
 				CODE_SIGN_ENTITLEMENTS = SocketChat/SocketChat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SocketChat",
